@@ -286,6 +286,8 @@ local function PlayerHasItemEquipped(name: string): boolean
 end
 
 local function CrucifixEntity(entity: any, tool: Tool)
+task.spawn(function() 
+task.wait(0.2)
 local Players = game:GetService("Players")
 local player = Players.LocalPlayer
 
@@ -317,6 +319,7 @@ for _, v in ipairs(backpack:GetChildren()) do
 		v:Destroy()
 	end
 end
+end)
 
 	local model = entity.Model
 	local config = entity.Config
