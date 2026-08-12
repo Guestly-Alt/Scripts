@@ -9,6 +9,8 @@
             |___/                                                   |___/         |_|
 ]]--
 
+-- bla
+
 if getgenv().VynixuEntitySpawnerV2 then return getgenv().VynixuEntitySpawnerV2 end
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Functions.lua"))()
@@ -80,11 +82,12 @@ local CONST = {
 				Delay = 2,
 				Reversed = false
 			},
-			Damage = {
-				Enabled = true,
-				Range = 40,
-				Amount = 125,
-                IgnoreHiding = false
+            Damage = {
+                Enabled = true,
+                Range = 40,
+                Amount = 125,
+                IgnoreHiding = false,
+                DeathDelay = 0
 			},
 			Rebounding = {
 				Enabled = true,
@@ -472,8 +475,13 @@ local function DamagePlayer(entity: any)
     local newHealth = math.clamp(Humanoid.Health - config.Damage.Amount, 0, Humanoid.MaxHealth)
 
     -- Update health
-    Humanoid.Health = newHealth
     task.spawn(entity.RunCallback, entity, "OnDamagePlayer", newHealth)
+
+    if newHealth <= 0 then
+    task.wait(config.Damage.DeathDelay or 0)
+    end
+
+    Humanoid.Health = newHealth
 
     if newHealth == 0 then
         -- Death hints
@@ -1120,7 +1128,7 @@ if not getgenv()._internal_vynixu_entity_spawner then
 	end)
 end
 
-Module.Clear = function(self)
+Modules.Clear = function(self)
     for _, entity in next, self.ActiveEntities do
         entity:Despawn()
     end
