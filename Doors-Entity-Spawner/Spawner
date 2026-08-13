@@ -13,6 +13,44 @@ if getgenv().VynixuEntitySpawnerV2 then return getgenv().VynixuEntitySpawnerV2 e
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Functions.lua"))()
 
+local roomsFolder = workspace:WaitForChild("CurrentRooms")
+
+local SavedClones = {}
+
+local function clonePath(room)
+    if SavedClones[room] then return end
+
+    local nodes = room:FindFirstChild("PathfindNodes")
+    if not nodes then return end
+
+    local clone = nodes:Clone()
+    clone.Name = "PathfindNodes"
+    clone.Parent = room
+
+    SavedClones[room] = clone
+end
+
+local function removeClone(room)
+    if SavedClones[room] then
+        SavedClones[room]:Destroy()
+        SavedClones[room] = nil
+    end
+end
+
+-- 🔥 CHECK CỰC NHANH (Heartbeat level)
+game:GetService("RunService").Heartbeat:Connect(function()
+    for _, room in ipairs(roomsFolder:GetChildren()) do
+        if not SavedClones[room] then
+            clonePath(room)
+        end
+    end
+end)
+
+-- dọn clone nếu room bị xoá
+roomsFolder.ChildRemoved:Connect(function(room)
+    removeClone(room)
+end)
+
 -- \\ Services // --
 
 local CollectionService = game:GetService("CollectionService")
