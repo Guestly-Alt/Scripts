@@ -1249,9 +1249,28 @@ UIS.TouchStarted:Connect(function(touch)
 	lastLook = pos
 end)
 
+local ContextActionService = game:GetService("ContextActionService")
+
+local function updateMouseState()
+	if not mobile then
+		if guiVisible then
+			UIS.MouseBehavior = Enum.MouseBehavior.Default
+			UIS.MouseIconEnabled = true
+		else
+			UIS.MouseBehavior = Enum.MouseBehavior.LockCenter
+			UIS.MouseIconEnabled = false
+		end
+	else
+		UIS.MouseIconEnabled = true
+	end
+end
+
+
 toggle.MouseButton1Click:Connect(function()
 	guiVisible = not guiVisible
 	toggle.Text = guiVisible and "GUI" or "SHOW"
+
+	updateMouseState()
 
 	local targetSize = guiVisible and UDim2.fromOffset(470, 285) or UDim2.fromOffset(0, 0)
 	local targetTransparency = guiVisible and 0 or 1
@@ -2317,4 +2336,4 @@ end)
 
 refresh()
 updateLayerUI()
-updateOptionButtons()
+updateOptionButtons() 
