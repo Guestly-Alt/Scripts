@@ -1,6 +1,8 @@
 local function CreateHub(Options)
 	Options = Options or {}
 
+-- ba
+	
 	local Players = game:GetService("Players")
 	local TweenService = game:GetService("TweenService")
 	local UserInputService = game:GetService("UserInputService")
@@ -616,6 +618,12 @@ local Content = New("Frame", {
 local Pages = {}
 local Tabs = {}
 
+local Section
+local Button
+local Toggle
+local Slider
+local Dropdown
+
 local function UpdateTabGradients(activeIndex)
 	for i, tab in ipairs(Tabs) do
 		local gradientFrame = tab:FindFirstChild("TabBottomGradient")
@@ -1004,10 +1012,32 @@ local function CreateTab(name, icon)
 		})
 	end)
 
-	return page
+		return {
+		Page = page,
+
+		Section = function(_, text)
+			return Section(page, text)
+		end,
+
+		Button = function(_, data)
+			return Button(page, data)
+		end,
+
+		Toggle = function(_, data)
+			return Toggle(page, data)
+		end,
+
+		Slider = function(_, data)
+			return Slider(page, data)
+		end,
+
+		Dropdown = function(_, data)
+			return Dropdown(page, data)
+		end
+	}
 end
 
-local function Section(page, text)
+Section = function(page, text)
 	return New("TextLabel", {
 		Size = UDim2.new(1, 0, 0, 20),
 		BackgroundTransparency = 1,
@@ -1250,7 +1280,7 @@ end
 	end)
 end
 
-local function Button(page, data)
+Button = function(page, data)
 	local button = New("TextButton", {
 		Size = UDim2.new(1, 0, 0, 43),
 		BackgroundColor3 = Theme.Secondary,
@@ -1344,7 +1374,7 @@ end
 
 local ToggleObjects = {}
 
-local function Toggle(page, data)
+Toggle = function(page, data)
 	local button = New("TextButton", {
 		Size = UDim2.new(1, 0, 0, 43),
 		BackgroundColor3 = Theme.Secondary,
@@ -1458,7 +1488,7 @@ end)
 	}
 end
 
-local function Slider(page, data)
+Slider = function(page, data)
 	local holder = New("Frame", {
 		Size = UDim2.new(1, 0, 0, 50),
 		BackgroundColor3 = Theme.Secondary,
@@ -1581,7 +1611,7 @@ local function Slider(page, data)
 	}
 end
 
-local function Dropdown(page, data)
+Dropdown = function(page, data)
 	local holder = New("Frame", {
 		Size = UDim2.new(1, 0, 0, 39),
 		BackgroundColor3 = Theme.Secondary,
@@ -1938,9 +1968,9 @@ end
 
 local Settings = CreateTab("Settings", "⚙")
 
-Section(Settings, "Hub Theme")
+Settings:Section("Hub Theme")
 
-Dropdown(Settings, {
+Settings:Dropdown({
 	Name = "Theme",
 	Values = {
 		"Void",
@@ -1954,7 +1984,7 @@ Dropdown(Settings, {
 	end
 })
 
-Button(Settings, {
+Settings:Button({
 	Name = "Reset Theme",
 	Description = "Return to default Void theme",
 	Callback = function()
@@ -1967,7 +1997,7 @@ Button(Settings, {
 	end
 })
 
-Button(Settings, {
+Settings:Button({
 	Name = "Destroy Hub",
 	Description = "Close the interface",
 	Callback = function()
