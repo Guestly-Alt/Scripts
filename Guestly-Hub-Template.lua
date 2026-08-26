@@ -1,7 +1,5 @@
 local function CreateHub(Options)
 	Options = Options or {}
-	
-	-- ok
 
 	local Players = game:GetService("Players")
 	local TweenService = game:GetService("TweenService")
@@ -907,48 +905,54 @@ local function CreateTab(name, icon)
 	local page = CreatePage()
 
 	local button = New("TextButton", {
-	Size = UDim2.new(1, -2, 0, 32),
-	BackgroundColor3 = Theme.Tertiary,
-	Text = "",
-	AutoButtonColor = false,
-	LayoutOrder = name == "Settings" and 999999 or #Tabs + 1,
-	ZIndex = 18,
-	Parent = TabList
-})
+		Size = UDim2.new(1, -2, 0, 32),
+		BackgroundColor3 = Theme.Tertiary,
+		Text = "",
+		AutoButtonColor = false,
+		LayoutOrder = name == "Settings" and 999999 or #Tabs + 1,
+		ZIndex = 18,
+		Parent = TabList
+	})
 
 	Corner(button, 8)
-	
+
 	local tabGradient = New("Frame", {
-	Name = "TabBottomGradient",
-	Size = UDim2.fromScale(1, 1),
-	Position = UDim2.fromScale(0, 0),
-	BackgroundColor3 = Theme.Background,
-	BackgroundTransparency = 0,
-	BorderSizePixel = 0,
-	ZIndex = 18,
-	ClipsDescendants = true,
-	Parent = button
-})
+		Name = "TabBottomGradient",
+		Size = UDim2.fromScale(1, 1),
+		Position = UDim2.fromScale(0, 0),
+		BackgroundColor3 = Theme.Background,
+		BackgroundTransparency = 0,
+		BorderSizePixel = 0,
+		ZIndex = 18,
+		ClipsDescendants = true,
+		Parent = button
+	})
 
-Corner(tabGradient, 8)
+	Corner(tabGradient, 8)
 
-local gradient = New("UIGradient", {
-	Color = ColorSequence.new({
-		ColorSequenceKeypoint.new(0, Theme.Background),
-		ColorSequenceKeypoint.new(.5, Theme.Background:Lerp(Theme.Accent2, .025)),
-		ColorSequenceKeypoint.new(1, Theme.Background:Lerp(Theme.Accent, .06))
-	}),
+	local gradient = New("UIGradient", {
+		Color = ColorSequence.new({
+			ColorSequenceKeypoint.new(0, Theme.Background),
+			ColorSequenceKeypoint.new(
+				.5,
+				Theme.Background:Lerp(Theme.Accent2, .025)
+			),
+			ColorSequenceKeypoint.new(
+				1,
+				Theme.Background:Lerp(Theme.Accent, .06)
+			)
+		}),
 
-	Transparency = NumberSequence.new({
-		NumberSequenceKeypoint.new(0, 0.98),
-		NumberSequenceKeypoint.new(.4, 0.94),
-		NumberSequenceKeypoint.new(.75, 0.82),
-		NumberSequenceKeypoint.new(1, 0.65)
-	}),
+		Transparency = NumberSequence.new({
+			NumberSequenceKeypoint.new(0, .98),
+			NumberSequenceKeypoint.new(.4, .94),
+			NumberSequenceKeypoint.new(.75, .82),
+			NumberSequenceKeypoint.new(1, .65)
+		}),
 
-	Rotation = 90,
-	Parent = tabGradient
-})
+		Rotation = 90,
+		Parent = tabGradient
+	})
 
 	New("TextLabel", {
 		Size = UDim2.fromOffset(22, 32),
@@ -978,11 +982,11 @@ local gradient = New("UIGradient", {
 	table.insert(Tabs, button)
 
 	button.MouseButton1Click:Connect(function()
-	local index = table.find(Tabs, button)
+		local index = table.find(Tabs, button)
 
-	SelectTab(index)
-	TabClickEffect(button)
-end)
+		SelectTab(index)
+		TabClickEffect(button)
+	end)
 
 	button.MouseEnter:Connect(function()
 		Tween(button, .15, {
@@ -1000,7 +1004,29 @@ end)
 		})
 	end)
 
-	return page
+	return {
+		Button = function(_, data)
+			return Button(page, data)
+		end,
+
+		Toggle = function(_, data)
+			return Toggle(page, data)
+		end,
+
+		Slider = function(_, data)
+			return Slider(page, data)
+		end,
+
+		Dropdown = function(_, data)
+			return Dropdown(page, data)
+		end,
+
+		Section = function(_, text)
+			return Section(page, text)
+		end,
+
+		Page = page
+	}
 end
 
 local function Section(page, text)
