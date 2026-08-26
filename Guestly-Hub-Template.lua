@@ -1,8 +1,6 @@
 local function CreateHub(Options)
 	Options = Options or {}
 
--- ba
-	
 	local Players = game:GetService("Players")
 	local TweenService = game:GetService("TweenService")
 	local UserInputService = game:GetService("UserInputService")
@@ -1280,6 +1278,37 @@ end
 	end)
 end
 
+local function ApplyButtonGradient(obj)
+	local gradient = obj:FindFirstChildOfClass("UIGradient")
+
+	if not gradient then
+		return
+	end
+
+	obj.BackgroundTransparency = 0
+	obj.BackgroundColor3 = Theme.Accent
+
+	gradient.Color = ColorSequence.new({
+		ColorSequenceKeypoint.new(
+			0,
+			Theme.Background:Lerp(Theme.Accent2, 0.18)
+		),
+		ColorSequenceKeypoint.new(
+			1,
+			Theme.Background:Lerp(Theme.Accent, 0.18)
+		)
+	})
+
+	gradient.Transparency = NumberSequence.new({
+		NumberSequenceKeypoint.new(0, 0.95),
+		NumberSequenceKeypoint.new(0.35, 0.9),
+		NumberSequenceKeypoint.new(0.7, 0.65),
+		NumberSequenceKeypoint.new(1, 0.2)
+	})
+
+	gradient.Rotation = 0
+end
+
 Button = function(page, data)
 	local button = New("TextButton", {
 		Size = UDim2.new(1, 0, 0, 43),
@@ -1305,21 +1334,22 @@ local buttonGradient = New("Frame", {
 
 Corner(buttonGradient, 9)
 
-local buttonGradientUI = New("UIGradient", {
+New("UIGradient", {
 	Color = ColorSequence.new({
 		ColorSequenceKeypoint.new(0, Theme.Accent),
-		ColorSequenceKeypoint.new(.65, Theme.Accent),
 		ColorSequenceKeypoint.new(1, Theme.Accent)
 	}),
 	Transparency = NumberSequence.new({
 		NumberSequenceKeypoint.new(0, 1),
-		NumberSequenceKeypoint.new(.55, 1),
-		NumberSequenceKeypoint.new(.8, .7),
+		NumberSequenceKeypoint.new(0.55, 1),
+		NumberSequenceKeypoint.new(0.8, 0.7),
 		NumberSequenceKeypoint.new(1, 0)
 	}),
 	Rotation = 0,
 	Parent = buttonGradient
 })
+
+ApplyButtonGradient(buttonGradient)
 
 	local stroke = AddStroke(button)
 
@@ -1845,32 +1875,7 @@ Gradient.Color = ColorSequence.new({
 			obj.Color = Theme.Stroke
 			
 elseif obj:IsA("Frame") and obj.Name == "ButtonRightGradient" then
-	obj.BackgroundTransparency = 0
-	obj.BackgroundColor3 = Theme.Accent
-
-	local gradient = obj:FindFirstChildOfClass("UIGradient")
-
-	if gradient then
-		gradient.Color = ColorSequence.new({
-	ColorSequenceKeypoint.new(
-		0,
-		Theme.Background:Lerp(Theme.Accent2, 0.18)
-	),
-	ColorSequenceKeypoint.new(
-		1,
-		Theme.Background:Lerp(Theme.Accent, 0.18)
-	)
-})
-
-		gradient.Transparency = NumberSequence.new({
-			NumberSequenceKeypoint.new(0, 0.95),
-			NumberSequenceKeypoint.new(0.35, 0.9),
-			NumberSequenceKeypoint.new(0.7, 0.65),
-			NumberSequenceKeypoint.new(1, 0.2)
-		})
-
-		gradient.Rotation = 0
-	end
+	ApplyButtonGradient(obj)
 
 		elseif obj:IsA("TextLabel") then
 			if obj == SubTitle then
