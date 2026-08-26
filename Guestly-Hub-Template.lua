@@ -8,8 +8,6 @@ local function CreateHub(Options)
 
 	local LP = Players.LocalPlayer
 
--- bla
-	
 	local Themes = {
 		Void = {
 			Background = Color3.fromRGB(9, 9, 14),
@@ -679,29 +677,7 @@ local function CreatePage()
 
 	table.insert(Pages, page)
 
-	return {
-		Button = function(_, data)
-			return Button(page, data)
-		end,
-
-		Toggle = function(_, data)
-			return Toggle(page, data)
-		end,
-
-		Slider = function(_, data)
-			return Slider(page, data)
-		end,
-
-		Dropdown = function(_, data)
-			return Dropdown(page, data)
-		end,
-
-		Section = function(_, text)
-			return Section(page, text)
-		end,
-
-		Page = page
-	}
+	return page
 end
 
 local CurrentTab = 1
