@@ -1,4 +1,4 @@
-local function CreateHub(Options)
+local function CreateHub(Options) -- bla
 	Options = Options or {}
 
 	local Players = game:GetService("Players")
@@ -765,11 +765,14 @@ end
 
 	local direction
 
-	if oldIndex < index then
-		direction = 1
-	else
-		direction = -1
-	end
+	local oldOrder = Tabs[oldIndex].LayoutOrder
+local newOrder = Tabs[index].LayoutOrder
+
+if oldOrder < newOrder then
+	direction = 1
+else
+	direction = -1
+end
 
 	local width = Content.AbsoluteSize.X
 
