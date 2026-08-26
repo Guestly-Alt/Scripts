@@ -1,65 +1,70 @@
-local Players = game:GetService("Players")
-local TweenService = game:GetService("TweenService")
-local UserInputService = game:GetService("UserInputService")
-local RunService = game:GetService("RunService")
+local function CreateHub(Options)
+	Options = Options or {}
 
-local LP = Players.LocalPlayer
+	local Players = game:GetService("Players")
+	local TweenService = game:GetService("TweenService")
+	local UserInputService = game:GetService("UserInputService")
+	local RunService = game:GetService("RunService")
 
-local Themes = {
-	Void = {
-		Background = Color3.fromRGB(9, 9, 14),
-		Secondary = Color3.fromRGB(14, 14, 22),
-		Tertiary = Color3.fromRGB(21, 21, 32),
-		Stroke = Color3.fromRGB(55, 55, 75),
-		Text = Color3.fromRGB(240, 240, 250),
-		SubText = Color3.fromRGB(145, 145, 165),
-		Accent = Color3.fromRGB(170, 85, 255),
-		Accent2 = Color3.fromRGB(90, 45, 180)
-	},
+	local LP = Players.LocalPlayer
 
-	Gold = {
-		Background = Color3.fromRGB(12, 11, 8),
-		Secondary = Color3.fromRGB(20, 18, 12),
-		Tertiary = Color3.fromRGB(30, 27, 18),
-		Stroke = Color3.fromRGB(75, 65, 35),
-		Text = Color3.fromRGB(245, 240, 220),
-		SubText = Color3.fromRGB(170, 160, 130),
-		Accent = Color3.fromRGB(212, 175, 55),
-		Accent2 = Color3.fromRGB(130, 100, 25)
-	},
+	local Themes = {
+		Void = {
+			Background = Color3.fromRGB(9, 9, 14),
+			Secondary = Color3.fromRGB(14, 14, 22),
+			Tertiary = Color3.fromRGB(21, 21, 32),
+			Stroke = Color3.fromRGB(55, 55, 75),
+			Text = Color3.fromRGB(240, 240, 250),
+			SubText = Color3.fromRGB(145, 145, 165),
+			Accent = Color3.fromRGB(170, 85, 255),
+			Accent2 = Color3.fromRGB(90, 45, 180)
+		},
 
-	Red = {
-		Background = Color3.fromRGB(14, 8, 10),
-		Secondary = Color3.fromRGB(23, 12, 15),
-		Tertiary = Color3.fromRGB(34, 17, 21),
-		Stroke = Color3.fromRGB(75, 35, 42),
-		Text = Color3.fromRGB(245, 235, 238),
-		SubText = Color3.fromRGB(170, 140, 145),
-		Accent = Color3.fromRGB(255, 70, 95),
-		Accent2 = Color3.fromRGB(150, 30, 50)
-	},
+		Gold = {
+			Background = Color3.fromRGB(12, 11, 8),
+			Secondary = Color3.fromRGB(20, 18, 12),
+			Tertiary = Color3.fromRGB(30, 27, 18),
+			Stroke = Color3.fromRGB(75, 65, 35),
+			Text = Color3.fromRGB(245, 240, 220),
+			SubText = Color3.fromRGB(170, 160, 130),
+			Accent = Color3.fromRGB(212, 175, 55),
+			Accent2 = Color3.fromRGB(130, 100, 25)
+		},
 
-	Cyan = {
-		Background = Color3.fromRGB(7, 12, 15),
-		Secondary = Color3.fromRGB(10, 19, 24),
-		Tertiary = Color3.fromRGB(15, 29, 35),
-		Stroke = Color3.fromRGB(30, 70, 80),
-		Text = Color3.fromRGB(230, 248, 250),
-		SubText = Color3.fromRGB(130, 165, 170),
-		Accent = Color3.fromRGB(55, 220, 255),
-		Accent2 = Color3.fromRGB(20, 120, 150)
+		Red = {
+			Background = Color3.fromRGB(14, 8, 10),
+			Secondary = Color3.fromRGB(23, 12, 15),
+			Tertiary = Color3.fromRGB(34, 17, 21),
+			Stroke = Color3.fromRGB(75, 35, 42),
+			Text = Color3.fromRGB(245, 235, 238),
+			SubText = Color3.fromRGB(170, 140, 145),
+			Accent = Color3.fromRGB(255, 70, 95),
+			Accent2 = Color3.fromRGB(150, 30, 50)
+		},
+
+		Cyan = {
+			Background = Color3.fromRGB(7, 12, 15),
+			Secondary = Color3.fromRGB(10, 19, 24),
+			Tertiary = Color3.fromRGB(15, 29, 35),
+			Stroke = Color3.fromRGB(30, 70, 80),
+			Text = Color3.fromRGB(230, 248, 250),
+			SubText = Color3.fromRGB(130, 165, 170),
+			Accent = Color3.fromRGB(55, 220, 255),
+			Accent2 = Color3.fromRGB(20, 120, 150)
+		}
 	}
-}
 
-local Config = {
-	DefaultTheme = "Void",
+	local Config = {
+		Name = Options.Name or "BOOMBOOOM",
+		DefaultTheme = Options.Theme or "Void",
+		ToggleText = Options.ToggleText or "BOOM",
+		BackgroundParticles = Options.BackgroundParticles ~= false,
 
-	ToggleText = "BOOM",
-	TogglePosition = UDim2.new(0, 15, 0.5, -30),
-	ToggleSize = UDim2.fromOffset(60, 60)
-}
+		TogglePosition = UDim2.new(0, 15, 0.5, -30),
+		ToggleSize = UDim2.fromOffset(60, 60)
+	}
 
-local Theme = Themes[Config.DefaultTheme] or Themes.Void
+	local Theme = Themes[Config.DefaultTheme] or Themes.Void
 
 local function New(class, props)
 	local obj = Instance.new(class)
@@ -503,12 +508,14 @@ local function CreateParticle()
 	end)
 end
 
-task.spawn(function()
-	while Gui.Parent do
-		CreateParticle()
-		task.wait(1)
-	end
-end)
+if Config.BackgroundParticles then
+	task.spawn(function()
+		while Gui.Parent do
+			CreateParticle()
+			task.wait(1)
+		end
+	end)
+end
 
 local UI = New("Frame", {
 	Name = "UI",
@@ -529,7 +536,7 @@ local Title = New("TextLabel", {
 	Size = UDim2.fromOffset(230, 22),
 	Position = UDim2.fromOffset(16, 7),
 	BackgroundTransparency = 1,
-	Text = "BOOMBOOOM",
+	Text = Config.Name,
 	Font = Enum.Font.GothamBold,
 	TextSize = 17,
 	TextColor3 = Theme.Text,
@@ -670,7 +677,23 @@ local function CreatePage()
 
 	table.insert(Pages, page)
 
-	return page
+	return {
+	Button = function(_, data)
+		return Button(page, data)
+	end,
+
+	Toggle = function(_, data)
+		return Toggle(page, data)
+	end,
+
+	Slider = function(_, data)
+		return Slider(page, data)
+	end,
+
+	Dropdown = function(_, data)
+		return Dropdown(page, data)
+	end
+}
 end
 
 local CurrentTab = 1
@@ -2041,3 +2064,16 @@ Main.AnchorPoint = Vector2.new(.5, .5)
 Main.Visible = false
 Main.Size = UDim2.fromOffset(1, 1)
 Main.Position = GetToggleSpawn()
+
+	return {
+		CreateTab = function(_, name, icon)
+			return CreateTab(name, icon)
+		end,
+
+		Notification = Notification
+	}
+end
+
+return {
+	CreateHub = CreateHub
+}
