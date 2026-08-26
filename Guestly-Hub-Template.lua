@@ -1,5 +1,7 @@
 local function CreateHub(Options)
 	Options = Options or {}
+	
+	-- ok
 
 	local Players = game:GetService("Players")
 	local TweenService = game:GetService("TweenService")
@@ -677,23 +679,7 @@ local function CreatePage()
 
 	table.insert(Pages, page)
 
-	return {
-	Button = function(_, data)
-		return Button(page, data)
-	end,
-
-	Toggle = function(_, data)
-		return Toggle(page, data)
-	end,
-
-	Slider = function(_, data)
-		return Slider(page, data)
-	end,
-
-	Dropdown = function(_, data)
-		return Dropdown(page, data)
-	end
-}
+	return page
 end
 
 local CurrentTab = 1
