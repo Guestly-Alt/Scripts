@@ -1,4 +1,4 @@
-local function CreateHub(Options) -- bla
+local function CreateHub(Options)
 	Options = Options or {}
 
 	local Players = game:GetService("Players")
@@ -51,7 +51,150 @@ local function CreateHub(Options) -- bla
 			SubText = Color3.fromRGB(130, 165, 170),
 			Accent = Color3.fromRGB(55, 220, 255),
 			Accent2 = Color3.fromRGB(20, 120, 150)
-		}
+		}, 
+		
+		Pink = {
+			Background = Color3.fromRGB(15, 7, 15),
+			Secondary = Color3.fromRGB(23, 10, 24),
+			Tertiary = Color3.fromRGB(35, 15, 35),
+			Stroke = Color3.fromRGB(79, 30, 80),
+			Text = Color3.fromRGB(250, 230, 250),
+			SubText = Color3.fromRGB(168, 130, 170),
+			Accent = Color3.fromRGB(255, 55, 245),
+			Accent2 = Color3.fromRGB(150, 20, 150)
+		}, 
+		
+		White = {
+	Background = Color3.fromRGB(15, 15, 15),
+	Secondary = Color3.fromRGB(24, 24, 24),
+	Tertiary = Color3.fromRGB(35, 35, 35),
+	Stroke = Color3.fromRGB(80, 80, 80),
+	Text = Color3.fromRGB(250, 250, 250),
+	SubText = Color3.fromRGB(170, 170, 170),
+	Accent = Color3.fromRGB(255, 255, 255),
+	Accent2 = Color3.fromRGB(150, 150, 150)
+}, 
+
+Yellow = {
+	Background = Color3.fromRGB(15, 15, 7),
+	Secondary = Color3.fromRGB(24, 24, 10),
+	Tertiary = Color3.fromRGB(35, 35, 15),
+	Stroke = Color3.fromRGB(79, 79, 30),
+	Text = Color3.fromRGB(250, 250, 230),
+	SubText = Color3.fromRGB(168, 168, 130),
+	Accent = Color3.fromRGB(255, 255, 55),
+	Accent2 = Color3.fromRGB(150, 150, 20)
+}, 
+
+Green = {
+	Background = Color3.fromRGB(7, 15, 7),
+	Secondary = Color3.fromRGB(10, 24, 10),
+	Tertiary = Color3.fromRGB(15, 35, 15),
+	Stroke = Color3.fromRGB(30, 79, 30),
+	Text = Color3.fromRGB(230, 250, 230),
+	SubText = Color3.fromRGB(130, 168, 130),
+	Accent = Color3.fromRGB(55, 255, 55),
+	Accent2 = Color3.fromRGB(20, 150, 20)
+}, 
+
+Mint = {
+	Background = Color3.fromRGB(7, 15, 13),
+	Secondary = Color3.fromRGB(10, 24, 21),
+	Tertiary = Color3.fromRGB(15, 35, 30),
+	Stroke = Color3.fromRGB(30, 79, 69),
+	Text = Color3.fromRGB(230, 250, 245),
+	SubText = Color3.fromRGB(130, 168, 158),
+	Accent = Color3.fromRGB(55, 255, 210),
+	Accent2 = Color3.fromRGB(20, 150, 125)
+}, 
+
+Blue = {
+	Background = Color3.fromRGB(7, 7, 15),
+	Secondary = Color3.fromRGB(10, 10, 24),
+	Tertiary = Color3.fromRGB(15, 15, 35),
+	Stroke = Color3.fromRGB(30, 30, 79),
+	Text = Color3.fromRGB(230, 230, 250),
+	SubText = Color3.fromRGB(130, 130, 168),
+	Accent = Color3.fromRGB(55, 55, 255),
+	Accent2 = Color3.fromRGB(20, 20, 150)
+}, 
+
+Sea = {
+	Background = Color3.fromRGB(7, 10, 15),
+	Secondary = Color3.fromRGB(10, 16, 24),
+	Tertiary = Color3.fromRGB(15, 23, 35),
+	Stroke = Color3.fromRGB(30, 47, 79),
+	Text = Color3.fromRGB(230, 240, 250),
+	SubText = Color3.fromRGB(130, 150, 168),
+	Accent = Color3.fromRGB(55, 175, 255),
+	Accent2 = Color3.fromRGB(20, 105, 150)
+}, 
+
+Violet = {
+	Background = Color3.fromRGB(11, 8, 15),
+	Secondary = Color3.fromRGB(17, 12, 24),
+	Tertiary = Color3.fromRGB(25, 17, 35),
+	Stroke = Color3.fromRGB(58, 30, 80),
+	Text = Color3.fromRGB(245, 235, 250),
+	SubText = Color3.fromRGB(155, 130, 170),
+	Accent = Color3.fromRGB(180, 55, 255),
+	Accent2 = Color3.fromRGB(105, 20, 150)
+}, 
+
+Lime = {
+	Background = Color3.fromRGB(10, 15, 7),
+	Secondary = Color3.fromRGB(17, 24, 10),
+	Tertiary = Color3.fromRGB(25, 35, 15),
+	Stroke = Color3.fromRGB(55, 80, 30),
+	Text = Color3.fromRGB(240, 250, 230),
+	SubText = Color3.fromRGB(145, 170, 130),
+	Accent = Color3.fromRGB(180, 255, 55),
+	Accent2 = Color3.fromRGB(105, 150, 20)
+}, 
+
+Orange = {
+	Background = Color3.fromRGB(15, 10, 7),
+	Secondary = Color3.fromRGB(24, 17, 10),
+	Tertiary = Color3.fromRGB(35, 25, 15),
+	Stroke = Color3.fromRGB(80, 50, 30),
+	Text = Color3.fromRGB(250, 240, 230),
+	SubText = Color3.fromRGB(170, 145, 130),
+	Accent = Color3.fromRGB(255, 145, 55),
+	Accent2 = Color3.fromRGB(150, 75, 20)
+}, 
+
+Rose = {
+	Background = Color3.fromRGB(15, 7, 10),
+	Secondary = Color3.fromRGB(24, 10, 15),
+	Tertiary = Color3.fromRGB(35, 15, 21),
+	Stroke = Color3.fromRGB(80, 30, 43),
+	Text = Color3.fromRGB(250, 230, 235),
+	SubText = Color3.fromRGB(170, 130, 140),
+	Accent = Color3.fromRGB(255, 55, 100),
+	Accent2 = Color3.fromRGB(150, 20, 55)
+}, 
+
+Black = {
+	Background = Color3.fromRGB(3, 3, 3),
+	Secondary = Color3.fromRGB(7, 7, 7),
+	Tertiary = Color3.fromRGB(12, 12, 12),
+	Stroke = Color3.fromRGB(35, 35, 35),
+	Text = Color3.fromRGB(245, 245, 245),
+	SubText = Color3.fromRGB(130, 130, 130),
+	Accent = Color3.fromRGB(45, 45, 45),
+	Accent2 = Color3.fromRGB(25, 25, 25)
+}, 
+
+PastelGreen = {
+	Background = Color3.fromRGB(8, 15, 9),
+	Secondary = Color3.fromRGB(13, 24, 15),
+	Tertiary = Color3.fromRGB(19, 35, 21),
+	Stroke = Color3.fromRGB(45, 80, 50),
+	Text = Color3.fromRGB(235, 250, 237),
+	SubText = Color3.fromRGB(135, 170, 140),
+	Accent = Color3.fromRGB(120, 255, 135),
+	Accent2 = Color3.fromRGB(65, 170, 80)
+}
 	}
 
 	local Config = {
@@ -59,6 +202,7 @@ local function CreateHub(Options) -- bla
 		DefaultTheme = Options.Theme or "Void",
 		ToggleText = Options.ToggleText or "BOOM",
 		BackgroundParticles = Options.BackgroundParticles ~= false,
+		Structure = Options.Structure or "Vertical",
 
 		TogglePosition = UDim2.new(0, 15, 0.5, -30),
 		ToggleSize = UDim2.fromOffset(60, 60)
@@ -594,6 +738,9 @@ local TabList = New("ScrollingFrame", {
 	ScrollBarThickness = 2,
 	ScrollBarImageColor3 = Theme.Accent,
 	AutomaticCanvasSize = Enum.AutomaticSize.Y,
+	CanvasSize = UDim2.fromScale(0, 0),
+	ScrollingDirection = Enum.ScrollingDirection.Y,
+	ScrollingEnabled = true,
 	ZIndex = 16,
 	Parent = Sidebar
 })
@@ -615,6 +762,95 @@ local Content = New("Frame", {
 
 local Pages = {}
 local Tabs = {}
+
+local Structure = Config.Structure
+
+local function ApplyStructure(mode)
+	Structure = mode
+
+	if mode == "Horizontal" then
+		-- Tab nằm ngang trên topbar
+		Sidebar.Size = UDim2.new(1, -18, 0, 43)
+		Sidebar.Position = UDim2.fromOffset(9, 48)
+
+		TabList.Size = UDim2.new(1, -8, 1, -8)
+		TabList.Position = UDim2.fromOffset(4, 4)
+		TabList.AutomaticCanvasSize = Enum.AutomaticSize.X
+		TabList.ScrollingDirection = Enum.ScrollingDirection.X
+		TabList.CanvasSize = UDim2.new(0, 0, 0, 0)
+
+		local layout = TabList:FindFirstChildOfClass("UIListLayout")
+
+		if layout then
+			layout.FillDirection = Enum.FillDirection.Horizontal
+			layout.HorizontalAlignment = Enum.HorizontalAlignment.Left
+			layout.VerticalAlignment = Enum.VerticalAlignment.Center
+		end
+
+		Content.Size = UDim2.new(1, -18, 1, -100)
+		Content.Position = UDim2.fromOffset(9, 96)
+
+		for _, tab in ipairs(Tabs) do
+			tab.Size = UDim2.fromOffset(100, 32)
+
+			local icon = tab:FindFirstChildOfClass("TextLabel")
+
+			if icon then
+				icon.Size = UDim2.fromOffset(22, 32)
+			end
+
+			local text = tab:FindFirstChildOfClass("TextLabel")
+
+			if text and text ~= icon then
+				text.Size = UDim2.new(1, -32, 1, 0)
+			end
+		end
+
+	else
+		-- Quay lại layout dọc
+		Sidebar.Size = UDim2.new(0, 110, 1, -57)
+		Sidebar.Position = UDim2.fromOffset(9, 48)
+
+		TabList.Size = UDim2.new(1, -8, 1, -8)
+		TabList.Position = UDim2.fromOffset(4, 4)
+		TabList.AutomaticCanvasSize = Enum.AutomaticSize.Y
+		TabList.ScrollingDirection = Enum.ScrollingDirection.Y
+		TabList.CanvasSize = UDim2.new(0, 0, 0, 0)
+
+		local layout = TabList:FindFirstChildOfClass("UIListLayout")
+
+		if layout then
+			layout.FillDirection = Enum.FillDirection.Vertical
+			layout.HorizontalAlignment = Enum.HorizontalAlignment.Left
+			layout.VerticalAlignment = Enum.VerticalAlignment.Top
+		end
+
+		Content.Size = UDim2.new(1, -129, 1, -57)
+		Content.Position = UDim2.fromOffset(119, 48)
+
+		for _, tab in ipairs(Tabs) do
+			tab.Size = UDim2.new(1, -2, 0, 32)
+
+			local labels = {}
+
+			for _, obj in ipairs(tab:GetChildren()) do
+				if obj:IsA("TextLabel") then
+					table.insert(labels, obj)
+				end
+			end
+
+			if labels[1] then
+				labels[1].Size = UDim2.fromOffset(22, 32)
+			end
+
+			if labels[2] then
+				labels[2].Size = UDim2.new(1, -32, 1, 0)
+			end
+		end
+	end
+
+	TabList.CanvasPosition = Vector2.zero
+end
 
 local Section
 local Button
@@ -662,6 +898,9 @@ local function CreatePage()
 		ScrollBarThickness = 2,
 		ScrollBarImageColor3 = Theme.Accent,
 		AutomaticCanvasSize = Enum.AutomaticSize.Y,
+		CanvasSize = UDim2.fromScale(0, 0),
+		ScrollingDirection = Enum.ScrollingDirection.Y,
+		ScrollingEnabled = true,
 		Visible = false,
 		ZIndex = 16,
 		Parent = Content
@@ -736,24 +975,24 @@ local function SelectTab(index)
 	local oldIndex = CurrentTab
 
 	if oldIndex == index then
-	local page = Pages[index]
+		local page = Pages[index]
 
-	if page then
-		page.Visible = true
-		page.Position = UDim2.fromScale(0, 0)
+		if page then
+			page.Visible = true
+			page.Position = UDim2.fromScale(0, 0)
+		end
+
+		for i, tab in ipairs(Tabs) do
+			Tween(tab, .18, {
+				BackgroundColor3 = i == index
+					and Theme.Accent2
+					or Theme.Tertiary
+			})
+		end
+
+		UpdateTabGradients(index)
+		return
 	end
-
-	for i, tab in ipairs(Tabs) do
-		Tween(tab, .18, {
-			BackgroundColor3 = i == index
-				and Theme.Accent2
-				or Theme.Tertiary
-		})
-	end
-
-	UpdateTabGradients(index)
-	return
-end
 
 	CurrentTab = index
 	TabAnimationId += 1
@@ -763,41 +1002,52 @@ end
 	local oldPage = Pages[oldIndex]
 	local newPage = Pages[index]
 
+	local oldOrder = Tabs[oldIndex].LayoutOrder
+	local newOrder = Tabs[index].LayoutOrder
+
 	local direction
 
-	local oldOrder = Tabs[oldIndex].LayoutOrder
-local newOrder = Tabs[index].LayoutOrder
-
-if oldOrder < newOrder then
-	direction = 1
-else
-	direction = -1
-end
-
-	local width = Content.AbsoluteSize.X
-
-	if width <= 0 then
-		width = Content.Size.X.Offset
+	if oldOrder < newOrder then
+		direction = 1
+	else
+		direction = -1
 	end
 
-	if width <= 0 then
-		width = 351
-	end
-
-	local center = UDim2.fromScale(0, 0)
-
+	local center
 	local oldPosition
 	local newStartPosition
 
-	if direction == 1 then
-		oldPosition = UDim2.new(0, 0, -1, 0)
-		newStartPosition = UDim2.new(0, 0, 1, 0)
+	if Structure == "Horizontal" then
+		center = UDim2.fromScale(0, 0)
+
+		if direction == 1 then
+			-- Tab mới ở bên phải
+			-- Page cũ trượt sang trái
+			oldPosition = UDim2.new(-1, 0, 0, 0)
+			newStartPosition = UDim2.new(1, 0, 0, 0)
+		else
+			-- Tab mới ở bên trái
+			-- Page cũ trượt sang phải
+			oldPosition = UDim2.new(1, 0, 0, 0)
+			newStartPosition = UDim2.new(-1, 0, 0, 0)
+		end
 	else
-		oldPosition = UDim2.new(0, 0, 1, 0)
-		newStartPosition = UDim2.new(0, 0, -1, 0)
+		center = UDim2.fromScale(0, 0)
+
+		if direction == 1 then
+			-- Tab mới ở phía dưới
+			-- Page cũ trượt lên
+			oldPosition = UDim2.new(0, 0, -1, 0)
+			newStartPosition = UDim2.new(0, 0, 1, 0)
+		else
+			-- Tab mới ở phía trên
+			-- Page cũ trượt xuống
+			oldPosition = UDim2.new(0, 0, 1, 0)
+			newStartPosition = UDim2.new(0, 0, -1, 0)
+		end
 	end
 
-	for i, page in ipairs(Pages) do
+	for _, page in ipairs(Pages) do
 		if page ~= oldPage and page ~= newPage then
 			page.Visible = false
 		end
@@ -808,6 +1058,7 @@ end
 
 	if oldPage and oldPage.Parent then
 		oldPage.Visible = true
+		oldPage.Position = center
 	end
 
 	if newPage and newPage.Parent then
@@ -914,7 +1165,9 @@ local function CreateTab(name, icon)
 	local page = CreatePage()
 
 	local button = New("TextButton", {
-		Size = UDim2.new(1, -2, 0, 32),
+		Size = Structure == "Horizontal"
+			and UDim2.fromOffset(100, 32)
+			or UDim2.new(1, -2, 0, 32),
 		BackgroundColor3 = Theme.Tertiary,
 		Text = "",
 		AutoButtonColor = false,
@@ -1694,14 +1947,19 @@ Dropdown = function(page, data)
 	})
 
 	local list = New("ScrollingFrame", {
-		Size = UDim2.new(1, -12, 0, math.min(#data.Values * 27, 108)),
-		Position = UDim2.fromOffset(6, 43),
-		BackgroundColor3 = Theme.Tertiary,
-		BorderSizePixel = 0,
-		ScrollBarThickness = 2,
-		ZIndex = 20,
-		Parent = holder
-	})
+	Size = UDim2.new(1, -12, 0, 108),
+	Position = UDim2.fromOffset(6, 43),
+	BackgroundColor3 = Theme.Tertiary,
+	BorderSizePixel = 0,
+	ScrollBarThickness = 2,
+	ScrollBarImageColor3 = Theme.Accent,
+	AutomaticCanvasSize = Enum.AutomaticSize.Y,
+	CanvasSize = UDim2.fromScale(0, 0),
+	ScrollingDirection = Enum.ScrollingDirection.Y,
+	ScrollingEnabled = true,
+	ZIndex = 20,
+	Parent = holder
+})
 
 	Corner(list, 7)
 
@@ -1749,15 +2007,10 @@ end)
 	opened = not opened
 
 	Tween(holder, .2, {
-		Size = opened
-			and UDim2.new(
-				1,
-				0,
-				0,
-				48 + math.min(#data.Values * 27, 108)
-			)
-			or UDim2.new(1, 0, 0, 39)
-	})
+	Size = opened
+		and UDim2.new(1, 0, 0, 156)
+		or UDim2.new(1, 0, 0, 39)
+})
 end)
 
 	return {
@@ -1984,11 +2237,36 @@ Settings:Dropdown({
 		"Void",
 		"Gold",
 		"Red",
-		"Cyan"
+		"Cyan", 
+		"Pink", 
+		"White", 
+		"Yellow", 
+		"Green", 
+		"Mint", 
+		"Blue", 
+		"Sea", 
+		"Violet", 
+		"Lime", 
+		"Orange", 
+		"Rose", 
+		"Black", 
+		"PastelGreen"
 	},
 	Default = Config.DefaultTheme,
 	Callback = function(value)
 		ApplyTheme(value)
+	end
+})
+
+Settings:Dropdown({
+	Name = "Structure",
+	Values = {
+		"Vertical",
+		"Horizontal"
+	},
+	Default = Config.Structure,
+	Callback = function(value)
+		ApplyStructure(value)
 	end
 })
 
@@ -2081,6 +2359,8 @@ UserInputService.InputEnded:Connect(function(input)
 	end
 end)
 
+ApplyStructure(Config.Structure)
+
 ApplyTheme(Config.DefaultTheme)
 
 Pages[1].Visible = true
@@ -2100,6 +2380,15 @@ Main.Position = GetToggleSpawn()
 
 		Notification = Notification
 	}
+end
+
+local test = false
+
+if test then
+	return CreateHub({
+		Name = "BOOMBOOOM",
+		Theme = "Void"
+	})
 end
 
 return {
